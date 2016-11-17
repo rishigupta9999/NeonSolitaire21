@@ -1,0 +1,108 @@
+//
+//  UISounds.h
+//  Neon21
+//
+//  Copyright Neon Games 2010. All rights reserved.
+
+typedef enum
+{
+	// Companion UI Sounds
+	SFX_COMPANION_AMBER_DD,
+	SFX_COMPANION_CAPPO_SPLIT,
+	SFX_COMPANION_IGUNAQ_REDO,
+	SFX_COMPANION_JOHNNY_SWAP,
+	SFX_COMPANION_PANDA_SURRENDER,
+	SFX_COMPANION_VUT_HIT,
+	// Blackjack Game UI Sounds
+	SFX_BLACKJACK_BET_MINUS,
+	SFX_BLACKJACK_BET_PLUS,
+	SFX_BLACKJACK_BET_MODIFY,
+	SFX_BLACKJACK_DOUBLEDOWN,
+	SFX_BLACKJACK_DEAL,
+	SFX_BLACKJACK_HIT,
+	SFX_BLACKJACK_SPLIT,
+	SFX_BLACKJACK_STAND,
+	// Run-21 Game UI Sounds
+	SFX_RUN21_PLACECARD_GREEN,
+	SFX_RUN21_PLACECARD_YELLOW,
+	SFX_RUN21_PLACECARD_RED,
+	// 21-Squared Game UI Sounds
+	SFX_21SQUARED_PLACECARD,
+	// Global UI Sounds
+	SFX_GLOBALUI_CARDCONFIRM,
+	// In-Game Table/Card/Deck Sounds [ Mirrored into BlackJackSoundDirector.m ]
+	SFX_DECK_BUST,			// Use this when the player loses his action due to a bust.  Not for outcome situations.
+	SFX_DECK_CARD_DEALT,	// sSoundFilenames[0] in sSoundFileNames.  Positional Audio
+	SFX_DECK_CARD_FLIPPED,	// sSoundFilenames[1] in sSoundFileNames.  Positional Audio
+	// Menu UI Sounds
+	SFX_MENU_BACK,
+	SFX_MENU_BUTTON_PRESS,
+	SFX_MENU_SLIDE_FRAME,
+	// Outcome UI Sounds
+	SFX_OUTCOME_LOSS,
+	SFX_OUTCOME_PUSH,
+	SFX_OUTCOME_SURRENDER,
+	SFX_OUTCOME_WIN_NORMAL,
+	SFX_OUTCOME_WIN_DD,
+	SFX_OUTCOME_WIN_SPECIAL,
+	// Stingers
+		// 21 Squared
+		SFX_STINGER_21SQUARED_COMPLETED_COLUMN,	// Probably should remove these ase they are 3d sounds.
+		SFX_STINGER_21SQUARED_COMPLETED_ROW,
+		SFX_STINGER_21SQUARED_LOSS,
+		SFX_STINGER_21SQUARED_WIN,
+		// Neon Blackjack
+		SFX_STINGER_BLACKJACK_BANKRUPT,
+		SFX_STINGER_BLACKJACK_BIGWIN,
+		SFX_STINGER_BLACKJACK_BJ,
+		SFX_STINGER_BLACKJACK_BROKETHEBANK,
+		SFX_STINGER_BLACKJACK_CHARLIE,
+		SFX_STINGER_BLACKJACK_LOSE,
+		SFX_STINGER_BLACKJACK_PUSH,
+		SFX_STINGER_BLACKJACK_WIN,
+		// Tutorial
+		SFX_STINGER_TUTORIAL_COMPLETE,
+		// Run 21
+		SFX_STINGER_RUN21_LOSE,
+		SFX_STINGER_RUN21_WIN,
+        // Rainbow
+        SFX_STINGER_RAINBOW_CARDPLAYER = SFX_STINGER_BLACKJACK_BJ,
+        SFX_STINGER_RAINBOW_CARDDEALER = SFX_STINGER_BLACKJACK_LOSE,
+        SFX_STINGER_RAINBOW_CARDPUSH = SFX_STINGER_BLACKJACK_PUSH,
+        SFX_STINGER_RAINBOW_OUTCOMEWIN = SFX_STINGER_BLACKJACK_BIGWIN,
+        SFX_STINGER_RAINBOW_OUTCOMELOSE = SFX_STINGER_BLACKJACK_BANKRUPT,
+        SFX_STINGER_RAINBOW_OUTCOMEPUSH = SFX_STINGER_BLACKJACK_LOSE,
+        SFX_STINGER_RAINBOW_DUMMY = SFX_STINGER_RUN21_WIN,
+	// Tutorial UI Sounds
+	SFX_TUTORIAL_BUTTON,
+	SFX_TUTORIAL_DIALOGUE,
+	SFX_TUTORIAL_PRESSTOCONFIRM,
+	// Other Sounds
+	SFX_MISC_PAUSE,
+	SFX_MISC_UNIMPLEMENTED,
+    SFX_NUM,
+} UISoundId;
+
+typedef struct
+{
+    const char* mFilename;
+} UISound;
+
+typedef struct
+{
+    BOOL	mLoop;
+	float	mGain;
+} UISoundParams;
+
+@class SoundSource;
+
+@interface UISounds : NSObject
+{
+}
+
++(void)InitDefaultParams:(UISoundParams*)outParams;
++(SoundSource*)PlayUISound:(UISoundId)inSoundId;
++(SoundSource*)PlayUISoundWithFilename:(NSString*)inFilename withParams:(UISoundParams*)inParams;
++(SoundSource*)PlayUISound:(UISoundId)inSoundId withParams:(UISoundParams*)inParams;
+
+@end

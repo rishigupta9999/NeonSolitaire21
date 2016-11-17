@@ -1,0 +1,122 @@
+//
+// Prefix header for all source files of the 'Neon21' target in the 'Neon21' project
+//
+#ifdef __OBJC__
+
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import <OpenGLES/EAGL.h>
+#import <OpenGLES/ES1/gl.h>
+#import <OpenGLES/ES1/glext.h>
+#import <QuartzCore/QuartzCore.h>
+#import <OpenAL/al.h>
+#import <OpenAL/alc.h>
+
+#import "Flurry.h"
+#import "FlurryAds.h"
+#import "KISSMetricsAPI.h"
+#import "NeonTypes.h"
+#import "NeonMath.h"
+#import "NeonUtilities.h"
+#import "NeonMetrics.h"
+#import "NeonGL.h"
+#import "FlowTypes.h"
+
+#define NEON_DEMO				(0)			// 0 for Release, 1 for Demo [Unsupported]
+
+// Platform
+#define LANDSCAPE_MODE			(1)
+#define USE_TEXT_CACHE          (1)
+
+#if TARGET_IPHONE_SIMULATOR
+#define CPU_SKINNING            (1)
+#else
+#define CPU_SKINNING            (0)
+#endif
+
+#define ENABLE_SKU_RAINBOW      (0)
+
+#define FUNCTION_DISPATCH_OPTIMIZATION  (1) // When we drop support for MBX devices, eliminate the C function wrappers to Objective-C classes 
+
+// Audio
+#define MUSIC_ENABLED           (1)			// Set to 0 to disable music output ( only for development )
+#define SOUND_ENABLED           (1)			// Set to 0 to disable sfx output ( only for development )
+
+// Profiling
+#define USE_LIGHTING			(1)
+
+// Menu/Flow On Screen labeling
+#define MENU_FLOW_LABELING		(0)
+
+// Cheat Defines
+#define CPU_PLAYER				(0)			// Turn this on to enable the CPU-controlled Player for deadstate tracking
+#define FORCE_MAJOR_STINGERS	(0)			// Are all stingers major events?
+#define START_CARD_DEBUG_LEVEL  (0)			// [0 - 2] - Indicates the Card Debug Level
+#define RAINBOW_WIN             (0)         // 0 = Normal , 1 = Dealer Wins, 2 = Player Wins
+#define HAVE_POWERUPS           (0)         // 0 = Normal , # = HowMany of each powerup you would like
+#define UNLIMITED_LIVES         (0)
+
+#define USE_LIVES               (0)
+#define USE_EXPERIENCE          (0)
+#define USE_TABLET              (1)
+#define USE_TORNADOES           (1)
+
+// Card stacking [CardManager.h]
+#define STACK_STARTHAND_PLAYER  (0)			// Stack the player's starting hand	[ STACK_PLAYER_LEFT_LABEL / STACK_PLAYER_RIGHT_LABEL ]
+#define STACK_STARTHAND_DEALER  (0)			// Stack the dealer's starting hand
+#define STACK_DECK              (0)         // Stack non-starting cards in the deck.
+
+// Where to start the game.
+
+// Set START_FLOW_MODE to "GAMEMODE_TYPE_RUN21" and START_FLOW_LEVEL to a number between 1 and 10 to start in an actual level.
+#define START_FLOW_MODE         (GAMEMODE_TYPE_MENU)
+#define START_FLOW_LEVEL        (0)
+#define START_DEBUG_STATE       (0)
+
+// Debugging of game states
+#define RAPID_RUN21				(0)         // 0 = Production ; Debug: # = How many cards would you like in the run21 deck size ( must be less than whatever the level's shoe total )
+#define RAPID_LOSE              (0)         // Set to 1 to lose when you'd normally win, if you set RAPID_RUN21 to 1, this will make you rapidly lose the level.
+#define CASINO_ID				(0)			// 1 = IChaChing , 2 = FjordKnox, 3 = GummySlots
+#define IAP_BYPASS_MANAGER      (0)			// 0 for Production, 1 to bypass Apple App Store
+#define IAP_DEVELOPER_MODE      (0)         // 0 for Production, 1 to load a developer save and have lives regen extremely fast.
+#define UNLOCK_LEVELS           (0)         // Set to a non-zero number to unlock every level up to and including that level.  Eg: If UNLOCK_LEVELS is 6.  Every level up to and including 6 will be unlocked.
+
+// Companion Debug Placements [CompanionManager.h]
+#define FORCE_COMPANION_SEATS       (0)		// If true, have the players at the table take the following postions
+	#define FORCE_COMPANION_PLAYER  (1)		// 1 CompID_Polly
+	#define FORCE_COMPANION_DEALER  (7)		//
+	#define FORCE_COMPANION_LEFT    (8)		//
+	#define FORCE_COMPANION_RIGHT   (9)		//
+
+#define MINI_GAME_TABLE_VERSION     (1)
+
+// Split testing
+#define SPLIT_TEST_FORCE_BUCKETS    (0)
+
+// Other debugging
+#define DEBUG_PICK_RAYS                 (0)
+#define DEBUG_TEXT_GENERATION           (0)
+#define DRAW_DEBUGMANAGER               (0)
+#define PRINT_IOS_BOOT_INFO             (0)
+#define TEXTURE_ATLAS_DUMP_DEBUG_IMAGE  (0)
+#define FACEBOOK_POST_ACHIEVEMENTS      (0)
+#define FACEBOOK_ASK_FOR_LIVES          (0)
+#define FACEBOOK_SHOW_FRIENDS_PROGRESS  (0)
+
+// NeonGam.ES functionality
+#define NEONGAM_PHP_ENABLED         (0)
+
+// Ad Debugging
+#define ADVERTISING_CACHE_INTERSTITIALS (1)
+#define ADVERTISING_ENABLED         NEON_FREE_VERSION
+#define ADVERTISING_DEBUG           (0)     // 0 for Production Mode, 1 to "spam" console messages with ad info.
+#define ADVERTISING_FLURRY_DEBUG    (0)     // 0 for Production Mode, 1 for Developer Mode.
+#define ADVERTISING_FORCE           (0)     // 0 for Production Mode, 1 to enable advertising regardless of IAP disabling it.
+
+#define ADS_CBOOST_ENABLE           (1)
+#define ADS_CBOOST_PRODUCTION       (1)     // 0 for Test App.
+#define ADS_CBOOST_INTERSTITIALS    (1)     // 1 for Production Mode
+
+#import "NeonAdvertising.h"
+
+#endif // __OBJC__
